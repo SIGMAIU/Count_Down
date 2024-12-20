@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chris Jezreel - Christmas Countdown</title>
-    <link rel="icon" href="./img/santa-claus-elements-red-background_1057-2152.avif" type="image/x-icon"> <!-- Add this line -->
+    <link rel="icon" href="./img/santa-claus-elements-red-background_1057-2152.avif" type="image/x-icon">
     <style>
         body {
             margin: 0;
@@ -40,7 +40,7 @@
             font-weight: bold;
             color: #fff;
         }
-        
+
         .user-card h1 {
             margin: 0;
             font-size: 2rem;
@@ -63,28 +63,86 @@
 
         .countdown {
             position: absolute;
-            bottom: 20px;
+            bottom: 60px; /* Adjusting position closer to the user card */
+            left: 50%;
+            transform: translateX(-50%);
+            background: #555; /* Card background for countdown */
+            padding: 10px;
+            border-radius: 5px;
             font-size: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .icon {
             width: 24px;
             height: 24px;
         }
+
+        .snow_wrap {
+            height: 900vh; /* Original height for better performance */
+            width: 100%;
+            background-size: cover;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .snow {
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            opacity: 0.8;
+            border-radius: 50%;
+            animation: fall 5s infinite ease-in-out, drift 5s infinite linear;
+        }
+
+        .snow:nth-child(even) {
+            width: 8px;
+            height: 8px;
+            animation-duration: 6s;
+        }
+
+        .snow:nth-child(odd) {
+            width: 12px;
+            height: 12px;
+            animation-duration: 4s;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        @keyframes drift {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(100vw);
+            }
+        }
     </style>
 </head>
 <body>
+
     <div class="user-card">
         <div class="author">Author: Chris_Jezreel D</div>
-
         <img src="./img/3272-cat-drinking-boba-pfpsgg.gif" alt="Your Profile">
-
         <div class="profile">
             <a href="https://discord.com/users/666579203180724225" target="_blank">
                 <img class="icon" src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord Logo">
                 Discord Profile
             </a>
-            <a href="https://github.com/ChrisJezreel" target="_blank">
+            <a href="https://github.com/SIGMAIU" target="_blank">
                 <img class="icon" src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub Logo">
                 GitHub Profile
             </a>
@@ -97,6 +155,16 @@
         <source src="./audio/christmas-lofi-music-269177.mp3" type="audio/mp3">
         Your browser does not support the audio tag.
     </audio>
+
+    <div class="snow_wrap">
+        <div class="snow"></div>
+        <div class="snow"></div>
+        <div class="snow"></div>
+        <div class="snow"></div>
+        <div class="snow"></div>
+        <div class="snow"></div>
+        <div class="snow"></div>
+    </div>
 
     <script>
         function updateCountdown() {
@@ -114,7 +182,7 @@
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-            document.getElementById('countdown').textContent = 
+            document.getElementById('countdown').textContent =
                 `${days}d ${hours}h ${minutes}m ${seconds}s until Christmas`;
         }
 
