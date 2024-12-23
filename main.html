@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moving Button</title>
+    <style id="INLINE_PEN_STYLESHEET_ID">
+
+       body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+            overflow: hidden; /* Ensure hearts don't create a scrollbar */
+        }
+
+
+        html, body {
+padding: 0;
+margin: 0;
+width: 100vw;
+height: 100vh;
+position: relative;
+overflow: hidden;
+background: linear-gradient(#123, #111);
+}
+        .button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: move 3s infinite alternate ease-in-out;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            color: white;
+            background-color: #1c2541;
+            border: 2px solid white;
+            border-radius: 5px;
+            cursor: pointer;
+            animation: bounce 1s infinite alternate ease-in-out;
+        }
+
+        button:hover {
+            background-color: #3a506b;
+        }
+
+        @keyframes move {
+            0% {
+                top: 30%;
+                left: 40%;
+            }
+            100% {
+                top: 70%;
+                left: 60%;
+            }
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="button">
+        <a href="index.html">
+            <button>PRESS ME</button>
+    </div>
+</body>
+</html>
