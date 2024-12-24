@@ -681,7 +681,7 @@
         </div>
     </div>
 
-    <div class="countdown" id="countdown"></div>
+       <div class="countdown" id="countdown"></div>
 
 <audio id="backgroundAudio" autoplay loop>
     <source src="./audio/christmas-lofi-music-269177.mp3" type="audio/mp3">
@@ -691,8 +691,9 @@
 <script>
     // Set the audio volume to 50% (or any value between 0.0 and 1.0)
     const audioElement = document.getElementById('backgroundAudio');
-    audioElement.volume = 0.3; // Adjust the volume level (0.5 is 50%)
-    
+    audioElement.volume = 0.4; // Adjust the volume level (0.5 is 50%)
+</script>
+    <script>
         function updateCountdown() {
             const christmas = new Date(new Date().getFullYear(), 11, 25).getTime();
             const now = new Date().getTime();
@@ -714,6 +715,6 @@
 
         setInterval(updateCountdown, 1000);
         updateCountdown();
-</script>
+    </script>
 </body>
 </html>
