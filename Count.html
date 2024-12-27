@@ -689,32 +689,29 @@
 </audio>
 
 <script>
-    // Set the audio volume to 50% (or any value between 0.0 and 1.0)
-    const audioElement = document.getElementById('backgroundAudio');
-    audioElement.volume = 0.4; // Adjust the volume level (0.5 is 50%)
-</script>
-    <script>
-        function updateCountdown() {
-            const christmas = new Date(new Date().getFullYear(), 11, 25).getTime();
-            const now = new Date().getTime();
-            const diff = christmas - now;
+    function updateCountdown() {
+        // Fix the date initialization for Christmas
+        const christmas = new Date(2025, 0, 1).getTime(); // 0 represents January
 
-            if (diff <= 0) {
-                document.getElementById('countdown').textContent = "Merry Christmas!🎄🎅";
-                return;
-            }
+        const now = new Date().getTime();
+        const diff = christmas - now;
 
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-            document.getElementById('countdown').textContent =
-                `${days}d ${hours}h ${minutes}m ${seconds}s until Christmas`;
+        if (diff <= 0) {
+            document.getElementById('countdown').textContent = "Happy New Year 🥳🎉";
+            return;
         }
 
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-    </script>
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById('countdown').textContent =
+            `${days}d ${hours}h ${minutes}m ${seconds}s until New Year`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+</script>
 </body>
 </html>
