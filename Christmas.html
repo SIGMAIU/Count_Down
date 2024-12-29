@@ -696,8 +696,14 @@
 </script>
     <script>
         function updateCountdown() {
-            const christmas = new Date(new Date().getFullYear(), 11, 25).getTime();
-            const now = new Date().getTime();
+            const now = new Date();
+            let christmas = new Date(now.getFullYear(), 11, 25); // Christmas this year
+
+            // If Christmas has passed, set the countdown for next year
+            if (now > christmas) {
+                christmas = new Date(now.getFullYear() + 1, 11, 25);
+            }
+
             const diff = christmas - now;
 
             if (diff <= 0) {
@@ -705,13 +711,15 @@
                 return;
             }
 
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+            const months = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+            const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
             document.getElementById('countdown').textContent =
-                `${days}d ${hours}h ${minutes}m ${seconds}s until Christmas`;
+                `${years}y ${months}m ${days}d ${hours}h ${minutes}m ${seconds}s until Christmas`;
         }
 
         setInterval(updateCountdown, 1000);
