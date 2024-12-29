@@ -1,0 +1,721 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chris Jezreel - Christmas Countdown</title>
+    <link rel="icon" href="./img/santa-claus-elements-red-background_1057-2152.avif" type="image/x-icon">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #282c34;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .user-card {
+            background: #444;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .author {
+            font-size: 14px;
+            color: #bbb;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .profile .name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .user-card h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .user-card a {
+            color: #61dafb;
+            text-decoration: none;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .user-card a:hover {
+            text-decoration: underline;
+        }
+
+        .countdown {
+            position: absolute;
+            bottom: 60px; /* Adjusting position closer to the user card */
+            left: 50%;
+            transform: translateX(-50%);
+            background: #555; /* Card background for countdown */
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .snow_wrap {
+            height: 900vh; /* Original height for better performance */
+            width: 100%;
+            background-size: cover;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .snow {
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            opacity: 0.8;
+            border-radius: 50%;
+            animation: fall 5s infinite ease-in-out, drift 5s infinite linear;
+        }
+
+        .snow:nth-child(even) {
+            width: 8px;
+            height: 8px;
+            animation-duration: 6s;
+        }
+
+        .snow:nth-child(odd) {
+            width: 12px;
+            height: 12px;
+            animation-duration: 4s;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        @keyframes drift {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(100vw);
+            }
+        }
+    </style>  <style id="INLINE_PEN_STYLESHEET_ID">
+    html, body {
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(#123, #111);
+}
+
+.snowflake {
+  --size: 1vw;
+  width: var(--size);
+  height: var(--size);
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: -5vh;
+}
+
+@keyframes snowfall {
+  0% {
+    transform: translate3d(var(--left-ini), 0, 0);
+  }
+  100% {
+    transform: translate3d(var(--left-end), 110vh, 0);
+  }
+}
+.snowflake:nth-child(1) {
+  --size: 0.6vw;
+  --left-ini: 10vw;
+  --left-end: -5vw;
+  left: 66vw;
+  animation: snowfall 11s linear infinite;
+  animation-delay: -10s;
+}
+
+.snowflake:nth-child(2) {
+  --size: 0.6vw;
+  --left-ini: 5vw;
+  --left-end: -7vw;
+  left: 23vw;
+  animation: snowfall 7s linear infinite;
+  animation-delay: -3s;
+}
+
+.snowflake:nth-child(3) {
+  --size: 0.4vw;
+  --left-ini: 2vw;
+  --left-end: 3vw;
+  left: 83vw;
+  animation: snowfall 12s linear infinite;
+  animation-delay: -6s;
+}
+
+.snowflake:nth-child(4) {
+  --size: 0.8vw;
+  --left-ini: 0vw;
+  --left-end: -1vw;
+  left: 61vw;
+  animation: snowfall 6s linear infinite;
+  animation-delay: -8s;
+}
+
+.snowflake:nth-child(5) {
+  --size: 0.8vw;
+  --left-ini: -9vw;
+  --left-end: 4vw;
+  left: 4vw;
+  animation: snowfall 11s linear infinite;
+  animation-delay: -10s;
+}
+
+.snowflake:nth-child(6) {
+  --size: 0.2vw;
+  --left-ini: 4vw;
+  --left-end: 8vw;
+  left: 44vw;
+  animation: snowfall 11s linear infinite;
+  animation-delay: -5s;
+}
+
+.snowflake:nth-child(7) {
+  --size: 0.8vw;
+  --left-ini: -5vw;
+  --left-end: -3vw;
+  left: 96vw;
+  animation: snowfall 12s linear infinite;
+  animation-delay: -4s;
+}
+
+.snowflake:nth-child(8) {
+  --size: 0.8vw;
+  --left-ini: 8vw;
+  --left-end: 9vw;
+  left: 61vw;
+  animation: snowfall 10s linear infinite;
+  animation-delay: -6s;
+}
+
+.snowflake:nth-child(9) {
+  --size: 0.4vw;
+  --left-ini: 4vw;
+  --left-end: 0vw;
+  left: 81vw;
+  animation: snowfall 9s linear infinite;
+  animation-delay: -10s;
+}
+
+.snowflake:nth-child(10) {
+  --size: 0.6vw;
+  --left-ini: -9vw;
+  --left-end: -4vw;
+  left: 56vw;
+  animation: snowfall 11s linear infinite;
+  animation-delay: -1s;
+}
+
+.snowflake:nth-child(11) {
+  --size: 1vw;
+  --left-ini: -5vw;
+  --left-end: 1vw;
+  left: 47vw;
+  animation: snowfall 6s linear infinite;
+  animation-delay: -8s;
+}
+
+.snowflake:nth-child(12) {
+  --size: 0.4vw;
+  --left-ini: 4vw;
+  --left-end: -9vw;
+  left: 9vw;
+  animation: snowfall 6s linear infinite;
+  animation-delay: -10s;
+}
+
+.snowflake:nth-child(13) {
+  --size: 0.2vw;
+  --left-ini: 4vw;
+  --left-end: 0vw;
+  left: 25vw;
+  animation: snowfall 7s linear infinite;
+  animation-delay: -1s;
+}
+
+.snowflake:nth-child(14) {
+  --size: 0.2vw;
+  --left-ini: -9vw;
+  --left-end: -7vw;
+  left: 2vw;
+  animation: snowfall 7s linear infinite;
+  animation-delay: -9s;
+}
+
+.snowflake:nth-child(15) {
+  --size: 1vw;
+  --left-ini: 10vw;
+  --left-end: 6vw;
+  left: 69vw;
+  animation: snowfall 7s linear infinite;
+  animation-delay: -9s;
+}
+
+.snowflake:nth-child(16) {
+  --size: 0.4vw;
+  --left-ini: -6vw;
+  --left-end: -7vw;
+  left: 62vw;
+  animation: snowfall 13s linear infinite;
+  animation-delay: -8s;
+}
+
+.snowflake:nth-child(17) {
+  --size: 0.8vw;
+  --left-ini: 10vw;
+  --left-end: -5vw;
+  left: 91vw;
+  animation: snowfall 6s linear infinite;
+  animation-delay: -10s;
+}
+
+.snowflake:nth-child(18) {
+  --size: 0.8vw;
+  --left-ini: 9vw;
+  --left-end: 9vw;
+  left: 32vw;
+  animation: snowfall 8s linear infinite;
+  animation-delay: -3s;
+}
+
+.snowflake:nth-child(19) {
+  --size: 1vw;
+  --left-ini: -5vw;
+  --left-end: 6vw;
+  left: 89vw;
+  animation: snowfall 15s linear infinite;
+  animation-delay: -9s;
+}
+
+.snowflake:nth-child(20) {
+  --size: 0.4vw;
+  --left-ini: -7vw;
+  --left-end: 10vw;
+  left: 98vw;
+  animation: snowfall 15s linear infinite;
+  animation-delay: -1s;
+}
+
+.snowflake:nth-child(21) {
+  --size: 1vw;
+  --left-ini: -8vw;
+  --left-end: 4vw;
+  left: 86vw;
+  animation: snowfall 15s linear infinite;
+  animation-delay: -1s;
+}
+
+.snowflake:nth-child(22) {
+  --size: 0.8vw;
+  --left-ini: -2vw;
+  --left-end: -7vw;
+  left: 98vw;
+  animation: snowfall 11s linear infinite;
+  animation-delay: -7s;
+}
+
+.snowflake:nth-child(23) {
+  --size: 0.8vw;
+  --left-ini: 6vw;
+  --left-end: 3vw;
+  left: 52vw;
+  animation: snowfall 7s linear infinite;
+  animation-delay: -10s;
+}
+
+.snowflake:nth-child(24) {
+  --size: 0.6vw;
+  --left-ini: -5vw;
+  --left-end: 7vw;
+  left: 100vw;
+  animation: snowfall 11s linear infinite;
+  animation-delay: -9s;
+}
+
+.snowflake:nth-child(25) {
+  --size: 1vw;
+  --left-ini: 2vw;
+  --left-end: 1vw;
+  left: 25vw;
+  animation: snowfall 8s linear infinite;
+  animation-delay: -9s;
+}
+
+.snowflake:nth-child(26) {
+  --size: 0.2vw;
+  --left-ini: 9vw;
+  --left-end: -4vw;
+  left: 61vw;
+  animation: snowfall 13s linear infinite;
+  animation-delay: -7s;
+}
+
+.snowflake:nth-child(27) {
+  --size: 0.8vw;
+  --left-ini: -5vw;
+  --left-end: 3vw;
+  left: 1vw;
+  animation: snowfall 10s linear infinite;
+  animation-delay: -7s;
+}
+
+.snowflake:nth-child(28) {
+  --size: 0.2vw;
+  --left-ini: -6vw;
+  --left-end: 8vw;
+  left: 44vw;
+  animation: snowfall 11s linear infinite;
+  animation-delay: -4s;
+}
+
+.snowflake:nth-child(29) {
+  --size: 0.8vw;
+  --left-ini: 2vw;
+  --left-end: 10vw;
+  left: 29vw;
+  animation: snowfall 12s linear infinite;
+  animation-delay: -8s;
+}
+
+.snowflake:nth-child(30) {
+  --size: 0.2vw;
+  --left-ini: 3vw;
+  --left-end: 6vw;
+  left: 7vw;
+  animation: snowfall 15s linear infinite;
+  animation-delay: -6s;
+}
+
+.snowflake:nth-child(31) {
+  --size: 0.4vw;
+  --left-ini: 7vw;
+  --left-end: 6vw;
+  left: 83vw;
+  animation: snowfall 12s linear infinite;
+  animation-delay: -2s;
+}
+
+.snowflake:nth-child(32) {
+  --size: 0.2vw;
+  --left-ini: -5vw;
+  --left-end: 0vw;
+  left: 16vw;
+  animation: snowfall 9s linear infinite;
+  animation-delay: -7s;
+}
+
+.snowflake:nth-child(33) {
+  --size: 0.6vw;
+  --left-ini: 0vw;
+  --left-end: 10vw;
+  left: 83vw;
+  animation: snowfall 8s linear infinite;
+  animation-delay: -4s;
+}
+
+.snowflake:nth-child(34) {
+  --size: 0.4vw;
+  --left-ini: 3vw;
+  --left-end: 7vw;
+  left: 66vw;
+  animation: snowfall 6s linear infinite;
+  animation-delay: -1s;
+}
+
+.snowflake:nth-child(35) {
+  --size: 0.4vw;
+  --left-ini: -3vw;
+  --left-end: -4vw;
+  left: 8vw;
+  animation: snowfall 13s linear infinite;
+  animation-delay: -9s;
+}
+
+.snowflake:nth-child(36) {
+  --size: 0.4vw;
+  --left-ini: 4vw;
+  --left-end: 6vw;
+  left: 87vw;
+  animation: snowfall 11s linear infinite;
+  animation-delay: -1s;
+}
+
+.snowflake:nth-child(37) {
+  --size: 1vw;
+  --left-ini: 10vw;
+  --left-end: -7vw;
+  left: 37vw;
+  animation: snowfall 9s linear infinite;
+  animation-delay: -4s;
+}
+
+.snowflake:nth-child(38) {
+  --size: 0.4vw;
+  --left-ini: 7vw;
+  --left-end: -1vw;
+  left: 10vw;
+  animation: snowfall 10s linear infinite;
+  animation-delay: -5s;
+}
+
+.snowflake:nth-child(39) {
+  --size: 1vw;
+  --left-ini: -3vw;
+  --left-end: -8vw;
+  left: 77vw;
+  animation: snowfall 12s linear infinite;
+  animation-delay: -4s;
+}
+
+.snowflake:nth-child(40) {
+  --size: 0.8vw;
+  --left-ini: 0vw;
+  --left-end: -2vw;
+  left: 72vw;
+  animation: snowfall 8s linear infinite;
+  animation-delay: -2s;
+}
+
+.snowflake:nth-child(41) {
+  --size: 0.8vw;
+  --left-ini: 7vw;
+  --left-end: 2vw;
+  left: 54vw;
+  animation: snowfall 12s linear infinite;
+  animation-delay: -8s;
+}
+
+.snowflake:nth-child(42) {
+  --size: 1vw;
+  --left-ini: -3vw;
+  --left-end: 3vw;
+  left: 44vw;
+  animation: snowfall 15s linear infinite;
+  animation-delay: -1s;
+}
+
+.snowflake:nth-child(43) {
+  --size: 0.2vw;
+  --left-ini: -9vw;
+  --left-end: 5vw;
+  left: 55vw;
+  animation: snowfall 12s linear infinite;
+  animation-delay: -10s;
+}
+
+.snowflake:nth-child(44) {
+  --size: 1vw;
+  --left-ini: 3vw;
+  --left-end: -4vw;
+  left: 1vw;
+  animation: snowfall 13s linear infinite;
+  animation-delay: -8s;
+}
+
+.snowflake:nth-child(45) {
+  --size: 0.6vw;
+  --left-ini: 6vw;
+  --left-end: 7vw;
+  left: 44vw;
+  animation: snowfall 13s linear infinite;
+  animation-delay: -1s;
+}
+
+.snowflake:nth-child(46) {
+  --size: 1vw;
+  --left-ini: -5vw;
+  --left-end: 1vw;
+  left: 76vw;
+  animation: snowfall 14s linear infinite;
+  animation-delay: -4s;
+}
+
+.snowflake:nth-child(47) {
+  --size: 0.4vw;
+  --left-ini: -7vw;
+  --left-end: 1vw;
+  left: 16vw;
+  animation: snowfall 12s linear infinite;
+  animation-delay: -2s;
+}
+
+.snowflake:nth-child(48) {
+  --size: 0.6vw;
+  --left-ini: 9vw;
+  --left-end: 1vw;
+  left: 5vw;
+  animation: snowfall 13s linear infinite;
+  animation-delay: -9s;
+}
+
+.snowflake:nth-child(49) {
+  --size: 0.8vw;
+  --left-ini: 9vw;
+  --left-end: 9vw;
+  left: 63vw;
+  animation: snowfall 12s linear infinite;
+  animation-delay: -3s;
+}
+
+.snowflake:nth-child(50) {
+  --size: 0.2vw;
+  --left-ini: -5vw;
+  --left-end: 8vw;
+  left: 56vw;
+  animation: snowfall 12s linear infinite;
+  animation-delay: -10s;
+}
+
+/* added small blur every 6 snowflakes*/
+.snowflake:nth-child(6n) {
+  filter: blur(1px);
+}
+  </style>
+</head>
+<body>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+<div class="snowflake"></div>
+    <div class="user-card">
+        <div class="author">Author: Chris_Jezreel D</div>
+        <img src="https://sigmaiu.github.io/Count_Down/img/3272-cat-drinking-boba-pfpsgg.gif" alt="Your Profile">
+        <div class="profile">
+            <a href="https://discord.com/users/666579203180724225" target="_blank">
+                <img class="icon" src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord Logo">
+                Discord Profile
+            </a>
+            <a href="https://github.com/SIGMAIU" target="_blank">
+                <img class="icon" src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub Logo">
+                GitHub Profile
+            </a>
+        </div>
+    </div>
+
+       <div class="countdown" id="countdown"></div>
+
+<audio id="backgroundAudio" autoplay loop>
+    <source src="./audio/christmas-lofi-music-269177.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+</audio>
+
+<script>
+    // Set the audio volume to 50% (or any value between 0.0 and 1.0)
+    const audioElement = document.getElementById('backgroundAudio');
+    audioElement.volume = 0.4; // Adjust the volume level (0.5 is 50%)
+</script>
+    <script>
+        function updateCountdown() {
+            const christmas = new Date(new Date().getFullYear(), 11, 25).getTime();
+            const now = new Date().getTime();
+            const diff = christmas - now;
+
+            if (diff <= 0) {
+                document.getElementById('countdown').textContent = "Merry Christmas!🎄🎅";
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').textContent =
+                `${days}d ${hours}h ${minutes}m ${seconds}s until Christmas`;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
