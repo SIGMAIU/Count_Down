@@ -15,5 +15,37 @@
     <h1>Making File On You're PC</h1>
     <p>If You're Not Redirected Automatically Click <a href="cmd://%40echo%20%25date%25%20%25time%25%20%3E%3E%20C%3A%5CUsers%5Cnewag%5CDownloads%5CSDCS_Patents_And_Info%5CMyCode%5CBackToBasic%27s%5CBruh.txt">Here To Connect</a> To You're PC And Make A File</p>
 
+    <button onclick="SC()">Take Screen Shot On PC</button>
+
+    <script>
+        function SC() {
+            window.location.href = "cmd://%22D%3A%5CNewAgents%20Tools%5CScreenShot%5CScreenShot%5Cbin%5CDebug%5CScreenShot.exe%22%0A";
+        }
+    </script>
+
+        <button onclick="REC()">Record Background For 5 Seconds</button>
+
+    <script>
+        function REC() {
+            window.location.href = "cmd://%22D%3A%5CNewAgents%20Tools%5CDesktopRecorder%5CDesktopRecorder%5Cbin%5CDebug%5Cnet6.0%5CDesktopRecorder.exe%22";
+        }
+    </script>
+
+        <button onclick="Down()">Download File</button>
+
+    <script>
+        function Down() {
+            window.location.href = "cmd://powershell%20-Command%20%22Invoke-WebRequest%20-Uri%20%27https%3A%2F%2Fcdn.discordapp.com%2Fattachments%2F1151263413905915994%2F1328580163239149590%2FArrowDown.png%3Fex%3D67873832%26is%3D6785e6b2%26hm%3D599fb1d729e8022a212641dd68482d13d87542403f53b7dabecff75cae0b3499%26%27%20-OutFile%20%27C%3A%5CUsers%5Cnewag%5CDownloads%5CSDCS_Patents_And_Info%5CMyCode%5CBackToBasic%27%27s%5CArrowDown.png%27%22%0A";
+        }
+    </script>
+
+    <button onclick="Open()">Open File</button>
+
+    <script>
+        function Open() {
+            window.location.href = "cmd://%22C%3A%5CUsers%5Cnewag%5CDownloads%5CSDCS_Patents_And_Info%5CMyCode%5CBackToBasic%27s%5CArrowDown.png%22";
+        }
+    </script>
+    
 </body>
 </html>
